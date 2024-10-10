@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Tarea</title>
+</head>
+<body style="background-color: #683475">
+    <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: #ffffff">Editar Tarea</h1>
+        <form action="/tasks/<%= @tarea.id %>" method="post" style="text-align: left; display: inline-block; margin-bottom: 30px;">
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ffffff" for="titulo">Nombre de la Tarea:</label><br>
+                <input type="text" name="titulo" value="<%= @tarea.titulo %>" required style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ffffff" for="descripcion">Descripción:</label><br>
+                <textarea name="descripcion" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;"><%= @tarea.descripcion %></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ffffff" for="fecha_vencimiento">Fecha de Vencimiento:</label><br>
+                <input type="date" name="fecha_vencimiento" value="<%= @tarea.fecha_vencimiento %>" required style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ffffff" for="etiqueta">Etiqueta:</label><br>
+                <input type="text" name="etiqueta" value="<%= @tarea.etiqueta %>" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="color: #ffffff" for="estado">Estado:</label><br>
+                <select name="estado" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="pendiente" <%= !@tarea.estado ? 'selected' : '' %>>Pendiente</option>
+                    <option value="completada" <%= @tarea.estado ? 'selected' : '' %>>Completada</option>
+                </select>
+            </div>
+            <button type="submit" style="padding: 10px 15px; border: none; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer;">Guardar Cambios</button>
+        </form>
+        <a style="color: #ffffff" href="/tasks" style="display: inline-block; margin-top: 30px; text-decoration: none; color: #007bff;">Cancelar</a>
+    </div>
+</body>
+</html>
